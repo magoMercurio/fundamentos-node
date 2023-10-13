@@ -17,3 +17,4 @@ function adios(nombre, otroCallback) {
     console.log('adios', nombre);
     otroCallback();
   }, 1500);
+}
