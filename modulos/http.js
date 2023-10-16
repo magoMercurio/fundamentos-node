@@ -1,14 +1,28 @@
 const http = require('http');
 
-http.createServer(function(req, res) {
+http.createServer(router).listen(3000);
+
+function router(req, res) {
   console.log('nueva peticion');
   console.log(req.url);
+
+  switch (req.url) {
+    case '/hola':
+      res.write('Hola que tal');
+      res.end();      
+      break;
+  
+    default:
+      res.write('Error 404: No se lo que quieres');
+      res.end();
+      
+  }
 
   res.writeHead(201, { 'Content-Type': 'text/plain' })
 
     // escribir respuesta al usuario
     res.write('Hola Estoy usando Res.write  ')
-    res.end('Hello World!');
-}).listen(3000);
+    res.end();
+}
 
 console.log('Escuchando el puerto 3000');
